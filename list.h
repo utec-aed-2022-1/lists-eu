@@ -2,14 +2,24 @@
 #define LIST_H
 
 #include "node.h"
+using namespace std;
 
 // TODO: Implement all methods
 template <typename T>
 class List {    
+    protected:
+        Node<T>* head;
+        Node<T>* tail;
+        int nodes;
+
     public:
         List() : head(nullptr), tail(nullptr), nodes(0) {};
         virtual ~List(){
-            // TODO            
+            while (this->head != nullptr)
+            {
+                this->head = this->head->next;
+                this->head->killSelf();
+            }         
         };
         
         //Contrato
